@@ -1,8 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 
 
 $colorOfpurpul:rgba(131, 10, 111, 0.933);
-$sizeofword:bold;
+$sizeofword:500;
+$Scolorofinfo:rgba(187, 161, 247, 0.8); 
+
+
+
+@mixin Size_color ($colorOfpurpul,$sizeofword,$Scolorofinfo){
+  color:  $colorOfpurpul;
+  font-weight:$sizeofword ;
+  box-shadow: 0 0 2px $Scolorofinfo;  
+}
+
 
 html {
   font-size: 62.5%;
@@ -11,33 +21,97 @@ html {
 
 body {
   font-family: 'Nunito', sans-serif;
-  font-weight: 400;
-  height: 120vh;
-  width: 220vh;
-  color: #333;
-  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ background-color: #353535;
 }
 
+
+.wrapper{
+width:100rem;
+margin: 0 auto;
+background-color:$colorOfpurpul ;
+min-height: 80vh;
+display: flex;
+border-radius: 5px;
+box-shadow: 0px 0px 8px $Scolorofinfo ;
+align-items: center;
+flex-direction: column;
+ }
+
+
+.play{
+ background-color:$Scolorofinfo;
+  border-bottom: 2px solid rgba(193, 173, 241, 0.8); 
+  padding: 8px 10px;
+  margin-right: 15px;
+  font-size: $sizeofword;
+  border-radius: 4px;
+  color:$colorOfpurpul;
+  cursor: pointer;
+}
+
+.info{
+  position: relative;
+  top: 6rem;
+  width: 78rem;
+  height: 28rem;
+  margin-left: 20px;
+  padding: .4rem;
+  margin-top: 4px;
+  color:white;
+  font-size: 1.7rem;
+ }
+
+.info p
+{
+    margin: .7px;
+}
+
+.show
+{
+  border: 2px solid rgba(193, 173, 241, 0.8); 
+  border-top: $colorOfpurpul; 
+  padding: 3px;
+  border-radius: .4rem;
+  
+}
+
+
+.hide
+{
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding-left: 1.7rem;
+}
 
 #pop-up{
- font-size: 1.8rem;
-  position:absolute;
-  z-index: 99 !important; 
-  width:250px;
-  padding:60px;
-  background-color: $colorOfpurpul;
-  color:white;
-  border:solid 1px $colorOfpurpul;
-  box-shadow:0px 0px 5px rgb(80, 10, 42), 5px 5px 5px rgb(65, 8, 43);
-  top:40%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  opacity: 0;
- pointer-events: none;
+	    position:fixed;
+    opacity: 0;
+    top:0;
+    left:0; 
+	/* fill the entire viewport */
+    width:100%;
+    height:100%;    
+   	background-color:$Scolorofinfo;    
 }
+
+#pop-up div{
+	  position:absolute;
+    font-size: 1.8rem;
+	  max-width:500px;
+  	min-width:300px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    padding:60px;
+    background-color: $colorOfpurpul;
+    color:white;
+    border:solid 2px rgb(100, 32, 91);
+    box-shadow:0px 0px 5px rgb(80, 10, 42), 
+    5px 5px 5px rgb(65, 8, 43),
+    5px 5px 5px rgb(65, 8, 43);
+  	border-radius:2px;
+}
+
 
 #btn-close{
   position:absolute;
@@ -53,23 +127,15 @@ body {
 }
 
 /* LAYOUT */
-
-
-
 #side{
  position: relative;
- bottom: 50rem;
- left:65rem;
-color:$colorOfpurpul;
-font-size:3rem;
-font-weight:$sizeofword ;
-background-color: rgba(255, 255, 255, 0.35);
-backdrop-filter: blur(200px);
-filter: blur();
-box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
- width: 50rem;
- 
- border-radius: 9px;
+ top: 3rem;
+ color:$colorOfpurpul;
+ font-size:3rem;
+ background-color:$Scolorofinfo;
+ box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+ padding: 9px;
+ border-radius: 5px;
  text-align: center;
  animation: myfirst 5s linear 3s infinite alternate;
 
@@ -79,49 +145,32 @@ box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   0%   {color:red}
   25%  {color:rgb(69, 23, 235)}
   50%  {color:rgb(247, 7, 155)}
-  75%  {color:rgb(7, 51, 7)}
-  100% {color:rgb(246, 245, 244)}
-}
-.info{
-  position: relative;
- top:30rem;
- right: 84rem;
-  width: 90rem;
-  height: 28rem;
-  margin-left: 20px;
-  padding-left: 1rem;
-  background-color:$colorOfpurpul;
-  color:white;
-  font-size: 1.3rem;
-
- 
- 
+  75%   {color:rgb(69, 23, 235)}
+  100% {color:red}
 }
 
-main {
+main 
+{
   position: relative;
-  width: 100rem;
-  height:52rem;
-  background-color: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(200px);
-  filter: blur();
+  width: 80rem;
+  top: 5rem;
+  background-color:$Scolorofinfo;;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   border-radius: 9px;
   overflow: hidden;
- display: flex;
- bottom: 17rem;
+  display: flex;
+  bottom: 17rem;
  
 }
 
 
 .player {
   flex: 50%;
-  padding: 6rem;
+  padding: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-weight: 400;
-   
   transition: all 0.75s;
 }
 
@@ -135,16 +184,14 @@ main {
   word-spacing: 2px;
   font-weight: 400;
   margin-bottom: .3rem;
-  color:  $colorOfpurpul;
- 
-  font-weight:$sizeofword ;
+  @include Size_color(1px, $sizeofword,$Scolorofinfo);
+  
 }
 
 .score {
   font-size: 6rem;
   font-weight: 300;
-  color: #f1ecf7;
-
+  color:white;
   padding-bottom: 17px;
 }
 
@@ -155,21 +202,17 @@ main {
   background-color:$colorOfpurpul;
   opacity: 0.8;
   border-radius: 9px;
-  color: #fff;
-  width: 55%;
- // padding:1rem;
+  color:white;
+  width: 59%;
   text-align: center;
- // transition: all 0.75s;
- height: 12rem;
- border-radius: 9px;
+ height: 13rem; 
 }
 
 
 .current-label {
   text-transform: uppercase;
- 
   font-size: 1.8rem;
-  color: #ddd;
+  color:white;
 }
 
 .current-score {
@@ -189,14 +232,9 @@ main {
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 400;
-  transition: all 0.2s;
-
   background-color: white;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-
   padding: 0.7rem 2.5rem;
-  border-radius: 50rem;
+  border-radius: 1.2rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
